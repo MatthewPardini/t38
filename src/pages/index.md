@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Divvy - T38
-image: https://airbus-h.assetsadobe2.com/is/image/content/dam/products-and-solutions/commercial-aircraft/a220-family/a220-300/airbus-a220-300-cockpit.jpg?wid=1920&fit=fit,1&qlt=85,0
+image: /img/cockpit-large.jpeg
 heading: Great coffee with a conscience
 subheading: Helping new Divvynauts take flight
 mainpitch:
