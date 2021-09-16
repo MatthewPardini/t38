@@ -3,7 +3,7 @@ templateKey: index-page
 title: Divvy - T38
 image: /img/cockpit-large.jpeg
 heading: Great coffee with a conscience
-tags: findme
+groups: findme
 subheading: Helping new Divvynauts take flight
 mainpitch:
   title: Why Kaldi

@@ -16,7 +16,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
-              tags
+              groups
               templateKey
             }
           }
@@ -35,7 +35,7 @@ exports.createPages = ({ actions, graphql }) => {
       const id = edge.node.id
       createPage({
         path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        groups: edge.node.frontmatter.groups,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
@@ -45,8 +45,28 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+    let groups = []
+    // Iterate through each post, putting all found groups into `groups`
+    posts.forEach((edge) => {
+      if (_.get(edge, `node.frontmatter.groups`)) {
+        groups = groups.concat(edge.node.frontmatter.groups)
+      }
+    })
+    // Eliminate duplicate groups
+    groups = _.uniq(groups)
+
+    // Make group pages
+    groups.forEach((group) => {
+      const groupPath = `/groups/${_.kebabCase(group)}/`
+
+      createPage({
+        path: groupPath,
+        component: path.resolve(`src/templates/groups-page.js`),
+      })
+    })
   })
 }
+
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
